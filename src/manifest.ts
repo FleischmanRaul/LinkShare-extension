@@ -1,9 +1,9 @@
 import { defineManifest } from '@crxjs/vite-plugin'
 
 export default defineManifest({
-  name: 'create-chrome-ext',
+  name: 'linkShare',
   description: '',
-  version: '0.0.0',
+  version: '0.0.1',
   manifest_version: 3,
   icons: {
     '16': 'img/logo-16.png',
@@ -32,5 +32,6 @@ export default defineManifest({
       matches: [],
     },
   ],
-  permissions: [],
+  permissions: ['storage', 'tabs'],
+  host_permissions: ["https://127.0.0.1/*"],
 })
