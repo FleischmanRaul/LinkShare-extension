@@ -5,11 +5,15 @@ chrome.tabs.onActivated.addListener(function () {
         // use `url` here inside the callback because it's asynchronous!
         console.log(url);
 
-        fetch('http://127.0.0.1:8000/link/?q=' + url, {
-            method: 'put',
-        }).then(r => r.text()).then(result => {
-            console.log(result);
-        })
+        if (tabs[0].incognito) {
+            return;
+        } else {
+            fetch('http://127.0.0.1:8000/link/?q=' + url, {
+                method: 'put',
+            }).then(r => r.text()).then(result => {
+                console.log(result);
+            })
+        }
     });
 });
 
