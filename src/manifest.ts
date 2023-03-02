@@ -2,7 +2,7 @@ import { defineManifest } from '@crxjs/vite-plugin'
 
 export default defineManifest({
   name: 'linkShare',
-  description: '',
+  description: 'Share your currently opened tab, with this simple extension.',
   version: '0.0.1',
   manifest_version: 3,
   icons: {
@@ -14,6 +14,7 @@ export default defineManifest({
   action: {
     default_popup: 'popup.html',
     default_icon: 'img/logo-48.png',
+    default_title: 'Tab sharing.'
   },
   options_page: 'options.html',
   background: {
@@ -32,6 +33,11 @@ export default defineManifest({
       matches: [],
     },
   ],
-  permissions: ['storage', 'tabs'],
-  host_permissions: ["https://127.0.0.1/*"],
+  oauth2: {
+    'client_id': '244255183352-bvs2r3uuasbhdhgh5d67p1orkg045vtg.apps.googleusercontent.com',
+    'scopes': ['https://www.googleapis.com/auth/userinfo.email']
+  },
+  permissions: ['storage', 'tabs', 'identity'],
+  host_permissions: ['https://127.0.0.1/*'],
+  key: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsSF0ya5L0eJO2zr6aVxX5OAT46vxPX0IU0C+2pIetI8tSViB4EbLetCCDtbAE+2uL6DR0wfpd0inlTbzTFSMRSsZuOUsRyYiygFHCohZIW5MhBGMWYJqeaAk8fKG/E6uTpet3oaK85yf13GOASGp+tHWCyaXbbPQJMN5zsNtFR11824P9K+lhLnQ8UyXrJQSrpugEjhbU3ZOMeJTmYqDDkW4pl15YEEMdGHW1oLpCHymp9Sd5C1fm0Bw2WuSURypR9gnkLF6CbSv8A5rj56ukwDlxbzwoSV9a2g+QlI+hcwwc5a3CbgBVMo3/lJvhj6+6gtL9WjYXttbk8I1KToKAwIDAQAB'
 })

@@ -1,10 +1,10 @@
 chrome.tabs.onActivated.addListener(function () {
-    // console.log("service")
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
         let url = tabs[0].url;
         // use `url` here inside the callback because it's asynchronous!
         console.log(url);
 
+        // don't share tab if in incognito mode
         if (tabs[0].incognito) {
             return;
         } else {
@@ -15,6 +15,10 @@ chrome.tabs.onActivated.addListener(function () {
             })
         }
     });
+});
+
+chrome.action.onClicked.addListener(function () {
+    chrome.tabs.create({ url: 'popup.html' });
 });
 
 export { }
